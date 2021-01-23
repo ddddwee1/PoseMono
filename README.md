@@ -22,15 +22,15 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 ## TODO
 
--[ ] Finish the first version of pipeline. Estimating single person, easy scene.
+- [ ] Finish the first version of pipeline. Estimating single person, easy scene.
 
--[ ] Add conversion from skeleton to MMD format.
+- [ ] Add conversion from skeleton to MMD format.
 
--[ ] Add support for occluded poses, make the system more robust to different occlusions
+- [ ] Add support for occluded poses, make the system more robust to different occlusions
 
--[ ] Add pose trackers for estimating multi-persons in the video 
+- [ ] Add pose trackers for estimating multi-persons in the video 
 
--[ ] Add camera coordinate estimation, add support for multi-person 3D pose estimation 
+- [ ] Add camera coordinate estimation, add support for multi-person 3D pose estimation 
 
 ## Versions
 
