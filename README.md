@@ -16,6 +16,10 @@ Let's start with a naive version and make progress step by step.
 
 - TorchSUL
 
+```
+pip install torchsul 
+```
+
 - Detectron2
 
 Pre-trained models and sample video can be downloaded from [here](https://www.dropbox.com/sh/zu80ojnx9l1r1ei/AABIVaCT5MIw3CAIw6Pkf73ua?dl=0-)
