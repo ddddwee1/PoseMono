@@ -2,6 +2,7 @@ import cv2
 import numpy as np 
 from . import sulplotter as plotter 
 import os
+from tqdm import tqdm
  
 def mkdir(fname):
 	dirname = os.path.dirname(fname)
@@ -33,7 +34,7 @@ def plot_skeleton3d(inp):
 			xs = [pts[j[0],2], pts[j[1],2]]
 			ys = [-pts[j[0],0], -pts[j[1],0]]
 			zs = [-pts[j[0],1], -pts[j[1],1]]
-			lims = [[-6.0,6.0], [-6.0,6.0], [-3.0,6.0]]
+			lims = [[-2.0,2.0], [-2.0,2.0], [-1,2.0]]
 			# lims=None
 			zorder = 3
 			# if (15 in j):

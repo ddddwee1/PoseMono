@@ -17,6 +17,17 @@ class Head(M.Model):
 			x = l(x)
 		return x 
 
+class DepthToSpace(M.Model):
+	def initialize(self, block_size):
+		self.block_size = block_size
+	def forward(self, x):
+		bsize, chn, h, w = x.shape[0], x.shape[1], x.shape[2], x.shape[3]
+		assert chn%(self.block_size**2)==0, 'DepthToSpace: Channel must be divided by square(block_size)'
+		x = x.view(bsize, -1, self.block_size, self.block_size, h, w)
+		x = x.permute(0,1,4,2,5,3)
+		x = x.reshape(bsize, -1, h*self.block_size, w*self.block_size)
+		return x 
+
 class UpSample(M.Model):
 	def initialize(self, upsample_layers, upsample_chn):
 		self.prevlayers = nn.ModuleList()
@@ -66,4 +77,4 @@ def get_network():
 	x = torch.zeros(1, 3, config.inp_size, config.inp_size)
 	with torch.no_grad():
 		net(x)
-	return x 
+	return net 

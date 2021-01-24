@@ -1,9 +1,11 @@
+import os 
 import cv2 
 import glob 
 import config
 import pickle 
 import numpy as np  
 from . import network 
+from tqdm import tqdm
 from TorchSUL import Model as M 
 import torch 
 
@@ -51,7 +53,7 @@ def run_frames(path):
 	results = []
 	paths = glob.glob(os.path.join(path, 'cropped/*'))
 	paths = sorted(paths)
-	for p in paths:
+	for p in tqdm(paths):
 		imgs = glob.glob(os.path.join(p, '*.png'))
 		img = cv2.imread(imgs[0])
 		img = cv2.resize(img, (config.inp_size, config.inp_size))

@@ -47,7 +47,7 @@ class Refine2dNet(M.Model):
 		self.c4 = M.ConvLayer1D(1, num_kpts*3)
 
 	def forward(self, x, drop=True):
-		x = x.view(x.shape[0], x.shape[1], self.num_kpts * 3)
+		x = x.view(x.shape[0], x.shape[1], self.num_kpts * 2)
 		x = x.permute(0,2,1)
 		x = self.c1(x)
 		x = self.r1(x)
