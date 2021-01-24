@@ -22,6 +22,8 @@ pip install torchsul
 
 - Detectron2
 
+- Pretrained models and sample video 
+
 Pre-trained models and sample video can be downloaded from [here](https://www.dropbox.com/sh/zu80ojnx9l1r1ei/AABIVaCT5MIw3CAIw6Pkf73ua?dl=0-)
 
 ## TODO
