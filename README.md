@@ -22,7 +22,7 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 ## TODO
 
-- [ ] Finish the first version of pipeline. Estimating single person, easy scene.
+- [x] Finish the first version of pipeline. Estimating single person, easy scene.
 
 - [ ] Add conversion from skeleton to MMD format.
 
