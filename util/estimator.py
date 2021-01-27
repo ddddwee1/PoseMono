@@ -41,15 +41,17 @@ def get_pts(img):
 	return res 
 
 def remap_to_origin(pts, bbox):
+	pts = pts.copy()
 	wh = bbox[2] - bbox[0]
 	corner_x = bbox[0]
 	corner_y = bbox[1]
-	pts = pts / config.out_size * wh 
+	pts[:,:2] *= wh / config.out_size 
 	pts[:,0] += corner_x
 	pts[:,1] += corner_y
 	return pts 
 
 def run_frames(path):
+	print('Estimating 2D pose:',path)
 	results = []
 	paths = glob.glob(os.path.join(path, 'cropped/*'))
 	paths = sorted(paths)
