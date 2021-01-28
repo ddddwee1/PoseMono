@@ -1,5 +1,7 @@
 # PoseMono
 
+*This repo is under development and will update frequently.*
+
 ## Introduction
 
 This is a repo of monocular 3D pose estimation. Here we provide a full pipeline of 3D human pose estimation in monocular videos. 
@@ -7,8 +9,6 @@ This is a repo of monocular 3D pose estimation. Here we provide a full pipeline 
 With this tool (maybe it's a tool), you can estimate 3D poses in any videos. 
 
 This repo is still in progress, and will be constantly upgraded.
-
-Let's start with a naive version and make progress step by step. 
 
 ## Requirement
 
