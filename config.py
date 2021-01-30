@@ -1,5 +1,7 @@
 import numpy as np 
 
+video_name = 'vid1t.mp4'
+
 # headnet 
 head_layernum = 1
 head_chn = 32
@@ -16,5 +18,8 @@ num_pts = 17
 
 # checkpoint
 estimator_path = './models/model_estimator/'
-video_name = 'vid1t.mp4'
 visualization_path = './output/'
+
+# MMD
+template_vmd_path = 'kagamine_template.vmd'
+vmd_output_path = 'output.vmd'
