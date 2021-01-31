@@ -57,3 +57,5 @@ V1.0: (25-Jan-2021) Basic version of the pipeline. Support single person 3D pose
 V1.1: (27-Jan-2021) I just found the previous network is super unstable under occlusion. So I improved the network structure. Now it can produce quite accurate and smooth poses. 
 
 V1.2 (30-Jan-2021) Add converter to MMD motion file (VMD file) 
+
+V1.3 (31-Jan-2021) Change the training strategy, modify the network structure, for better sensitivity to high-frequency motions. 

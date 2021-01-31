@@ -4,8 +4,8 @@ import numpy as np
 import torch.nn.functional as F 
 from TorchSUL import Model as M 
 
-seq_len = 129
-nettcn = networktcn.modelBundle(17, seq_len)
+seq_len = 81
+nettcn = networktcn.NetBundle(17, seq_len)
 x_dumb = torch.zeros(2,seq_len, 17*2)
 nettcn(x_dumb)
 M.Saver(nettcn).restore('./models/model_tcn/')
@@ -23,15 +23,3 @@ def run_points(pts):
 		pred = nettcn.evaluate(pts)
 	pred = pred.cpu().numpy()
 	return pred
-
-def pre_process_pts2d(pts):
-	pts = np.float32(pts)
-	print(pts.shape)
-	conf = pts[:,:,2:3]
-	pts = pts[:,:,:2]
-	pts = pts - pts[:,0:1]
-	conf[conf<0.7] = 0
-	conf[conf>=0.7] = 1
-	pts = pts * conf 
-	pts = pts / 2000
-	return pts 

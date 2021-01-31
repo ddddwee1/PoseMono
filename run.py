@@ -22,9 +22,17 @@ util.detector.run_frames('./temp/')
 # step 3: run pose detection
 pts = util.estimator.run_frames('./temp/')
 pts = pickle.load(open('temp/points.pkl','rb'))
+pts = np.float32(pts)
+print(pts.shape)
+conf = pts[:,:,2:3]
+pts = pts[:,:,:2]
+pts = pts - pts[:,0:1]
+conf[conf<0.7] = 0
+conf[conf>=0.7] = 1
+pts = pts * conf 
+pts = pts / 2000
 
 # step 4: run TCN
-pts = util.TCN.pre_process_pts2d(pts)
 pred = util.TCN.run_points(pts)
 print(pred.shape)
 pickle.dump(pred, open('temp/pts3d.pkl','wb'))
