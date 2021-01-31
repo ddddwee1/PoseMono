@@ -28,7 +28,7 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 ## Instruction for MMD motion (VMD) converter 
 
-1. Load any MMD model, turn of the IK point in the model manipulation section (モデル操作)
+1. Load any MMD model, turn off the IK point in the model manipulation section (モデル操作)
 
 2. Save the empty motion data (file -> save motion data / ファイル -> モーションデータ保存)
 
