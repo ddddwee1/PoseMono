@@ -58,4 +58,4 @@ V1.1: (27-Jan-2021) I just found the previous network is super unstable under oc
 
 V1.2 (30-Jan-2021) Add converter to MMD motion file (VMD file) 
 
-V1.3 (31-Jan-2021) Change the training strategy, modify the network structure, for better sensitivity to high-frequency motions. 
+V1.3 (31-Jan-2021) Change the training strategy, modify the network structure, for better sensitivity to high-frequency motions. (now still slight jittering)
