@@ -34,7 +34,7 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 3. Configure your template vmd path and your desired output vmd path in config.py 
 
-4. Now you can load this motion file into your MMD
+4. Run the "run.py", then you can load this motion file into your MMD
 
 *You can see the demo video along with the pre-trained model and video: mmd_vid1t.avi*
 
