@@ -59,3 +59,5 @@ V1.1: (27-Jan-2021) Now it can produce quite accurate and smooth poses.
 V1.2 (30-Jan-2021) Add converter to MMD motion file (VMD file) 
 
 V1.3 (31-Jan-2021) Change the training strategy, modify the network structure, for better sensitivity to high-frequency motions. (now still slight jittering)
+
+V1.4 (2-Feb-2021) Finalize the 2D->3D network. Now the estimations are stable and can be applied to clear videos. (Will add more examples in the future version)

@@ -4,7 +4,7 @@ import numpy as np
 import torch.nn.functional as F 
 from TorchSUL import Model as M 
 
-seq_len = 81
+seq_len = 129
 nettcn = networktcn.NetBundle(17, seq_len)
 x_dumb = torch.zeros(2,seq_len, 17*2)
 nettcn(x_dumb)
