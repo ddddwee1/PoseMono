@@ -50,6 +50,8 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 - [ ] Add camera coordinate estimation, add support for multi-person 3D pose estimation 
 
+- [ ] Add more modules to improve the robustness and performance, such as graph and post processing. 
+
 ## Versions
 
 V1.0: (25-Jan-2021) Basic version of the pipeline. Support single person 3D pose detection. 
