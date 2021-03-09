@@ -46,7 +46,7 @@ Pre-trained models and sample video can be downloaded from [here](https://www.dr
 
 - [x] Add support for occluded poses, make the system more robust to different occlusions
 
-- [ ] Add pose trackers for estimating multi-persons in the video 
+- [x] Add pose trackers for estimating multi-persons in the video 
 
 - [ ] Add camera coordinate estimation, add support for multi-person 3D pose estimation 
 
@@ -63,3 +63,5 @@ V1.2 (30-Jan-2021) Add converter to MMD motion file (VMD file)
 V1.3 (31-Jan-2021) Change the training strategy, modify the network structure, for better sensitivity to high-frequency motions. (now still slight jittering)
 
 V1.4 (2-Feb-2021) Finalize the 2D->3D network. Now the estimations are stable and can be applied to clear videos. (Will add more examples in the future version)
+
+V1.5 (10-Mar-2021) Add heatmap-guided pose estimator. Moving forward to multi-person 3D pose estimator. 

@@ -87,7 +87,7 @@ class Siamese(M.Model):
 		small_maps = small_maps.view(-1, shape[2]*shape[3])
 		small_maps = self.post_template(small_maps)
 
-		small_maps = small_maps.view(-1, config.num_pts, shape[1], shape[2], shape[3])
+		small_maps = small_maps.view(-1, config.num_pts_tracker, shape[1], shape[2], shape[3])
 		
 		res = []
 		map_tgt = map_tgt.unsqueeze(1)

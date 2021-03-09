@@ -78,3 +78,10 @@ def get_network():
 	with torch.no_grad():
 		net(x)
 	return net 
+
+def get_network_guided():
+	net = DensityNet(config.head_layernum_guided, config.head_chn_guided, config.upsample_layers_guided, config.upsample_chn_guided)
+	x = torch.zeros(1, 3+len(config.guide_map_idx), config.inp_size, config.inp_size)
+	with torch.no_grad():
+		net(x)
+	return net 

@@ -8,7 +8,7 @@ seq_len = 129
 nettcn = networktcn.NetBundle(17, seq_len)
 x_dumb = torch.zeros(2,seq_len, 17*2)
 nettcn(x_dumb)
-M.Saver(nettcn).restore('./models/model_tcn/')
+M.Saver(nettcn).restore(config.TCN_path)
 nettcn.eval()
 nettcn.cuda()
 

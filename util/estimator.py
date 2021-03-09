@@ -14,6 +14,11 @@ M.Saver(model_dnet).restore(config.estimator_path)
 model_dnet.eval()
 model_dnet.cuda()
 
+model_guided = network.get_guided_network()
+M.Saver(model_guided).restore(config.guided_estimator_path)
+model_guided.eval()
+model_guided.cuda()
+
 def _pre_process(img):
 	img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 	img = np.float32(img)
