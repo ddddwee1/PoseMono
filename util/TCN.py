@@ -3,6 +3,7 @@ import torch
 import numpy as np 
 import torch.nn.functional as F 
 from TorchSUL import Model as M 
+import config 
 
 seq_len = 129
 nettcn = networktcn.NetBundle(17, seq_len)

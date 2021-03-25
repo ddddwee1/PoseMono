@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn 
 import torch.nn.functional as F 
 from TorchSUL import Model as M 
-import hrnet 
+from . import hrnet 
 from torchvision.ops.roi_align import roi_align
 import config 
 
@@ -37,7 +37,6 @@ class UpSample(M.Model):
 		for p in self.postlayers:
 			x = p(x)
 		return x 
-
 
 class ExtraLayer(M.Model):
 	def initialize(self, outchn):
@@ -98,6 +97,28 @@ class Siamese(M.Model):
 
 		return res 
 
+	def extract_src(self, temp, bboxes):
+		with torch.no_grad():
+			fmap_tmp = self.backbone(temp)
+			fmap_tmp = self.upsample(fmap_tmp)
+			map_tmp = self.extra1(fmap_tmp)
+			small_maps = roi_align(map_tmp, bboxes, (7,7), 1, -1)
+			shape = small_maps.shape
+			small_maps = small_maps.view(-1, shape[2]*shape[3])
+			small_maps = self.post_template(small_maps)
+			small_maps = small_maps.view(-1, config.num_pts_tracker, shape[1], shape[2], shape[3])
+		return small_maps
+
+	def extract_tgt(self, target):
+		with torch.no_grad():
+			fmap_tgt = self.backbone(target)
+			fmap_tgt = self.upsample(fmap_tgt)
+			map_tgt = self.extra2(fmap_tgt)
+			# map_tgt = map_tgt.unsqueeze(1)
+		return map_tgt
+
+	def match(self, kernel, tgt):
+		return F.conv2d(tgt, kernel, None, 1, 3, 1, 1)
 
 if __name__=='__main__':
 	import numpy as np 

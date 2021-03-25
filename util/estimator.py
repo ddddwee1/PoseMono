@@ -14,12 +14,13 @@ M.Saver(model_dnet).restore(config.estimator_path)
 model_dnet.eval()
 model_dnet.cuda()
 
-model_guided = network.get_guided_network()
+model_guided = network.get_network_guided()
 M.Saver(model_guided).restore(config.guided_estimator_path)
 model_guided.eval()
 model_guided.cuda()
 
 def _pre_process(img):
+	img = cv2.resize(img, (config.inp_size, config.inp_size))
 	img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 	img = np.float32(img)
 	img = img / 255 
@@ -44,6 +45,50 @@ def get_pts(img):
 		res[i,1] = yy
 		res[i,2] = scr 
 	return res 
+
+def get_pts_batch(imgs):
+	imgs = [_pre_process(i) for i in imgs]
+	img = torch.from_numpy(np.float32(imgs)).cuda()
+	with torch.no_grad():
+		hmap = model_dnet(img).cpu().numpy()
+	results = []
+	for n in range(hmap.shape[0]):
+		res = np.zeros([hmap.shape[1], 3], dtype=np.float32)
+		for i in range(hmap.shape[1]):
+			m = hmap[n, i].reshape([-1])
+			idx = np.argmax(m)
+			scr = np.max(m)
+			xx = idx % config.out_size
+			yy = idx // config.out_size
+			res[i,0] = xx 
+			res[i,1] = yy
+			res[i,2] = scr 
+		results.append(res)
+	return results
+
+def get_pts_guided_batch(imgs, guidemap):
+	imgs = [_pre_process(i) for i in imgs]
+	img = torch.from_numpy(np.float32(imgs)).cuda()
+	if isinstance(guidemap, list):
+		guidemap = torch.stack(guidemap, dim=0)
+	guidemap = F.interpolate(guidemap, config.inp_size_guided)
+	inp = torch.cat([imgs, guidemap], dim=1)
+	with torch.no_grad():
+		hmap = model_guided(inp).cpu().numpy()
+	results = []
+	for n in range(hmap.shape[0]):
+		res = np.zeros([hmap.shape[1], 3], dtype=np.float32)
+		for i in range(hmap.shape[1]):
+			m = hmap[n, i].reshape([-1])
+			idx = np.argmax(m)
+			scr = np.max(m)
+			xx = idx % config.out_size
+			yy = idx // config.out_size
+			res[i,0] = xx 
+			res[i,1] = yy
+			res[i,2] = scr 
+		results.append(res)
+	return results
 
 def remap_to_origin(pts, bbox):
 	pts = pts.copy()
